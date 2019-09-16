@@ -8,7 +8,8 @@
   <hr>
   <ul>
     <li *ngFor="let user of users">
-      {{user.name}} <button mat-mini-fab color="warn" (click)="deleteUser(user._id)">x</button>
+      {{user.name}}
+      <button mat-mini-fab color="warn" (click)="deleteUser(user._id)">x</button>
     </li>
   </ul>
   <hr>

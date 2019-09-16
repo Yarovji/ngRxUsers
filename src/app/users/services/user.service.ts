@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../models/user.model';
-import { DeleteMassage } from '../models/delete-massage.model';
+import { User } from '../../models/user.model';
+import { DeleteMassage } from '../../models/delete-massage.model';
 
 
 @Injectable()
@@ -21,4 +21,5 @@ export class UserService {
   deleteUser(userId): Observable<DeleteMassage> {
     return this.http.delete<DeleteMassage>(`http://localhost:8081/api/user/${userId}`);
   }
+
 }
