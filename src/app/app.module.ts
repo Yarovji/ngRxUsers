@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
-import { userReducer } from './store/user.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import { userReducer } from './store/user.reducer';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    StoreModule.forRoot({users: userReducer})
+    StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument({})
   ],
   providers: [],
   bootstrap: [AppComponent]

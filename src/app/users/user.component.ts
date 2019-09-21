@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from './services/user.service';
 import { User } from '../models/user.model';
-import { DeleteMassage } from '../models/delete-massage.model';
+import { UserService } from './services/user.service';
+import { Store } from '@ngrx/store';
+import { getAllUsers, UsersState } from './store/user.reducer';
+import { GetAllUsers } from './store/user.actions';
 
 @Component({
   selector: 'app-user',
@@ -11,20 +13,14 @@ import { DeleteMassage } from '../models/delete-massage.model';
 export class UserComponent implements OnInit {
   users: Array<User>;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private store: Store<UsersState>) {}
 
   ngOnInit() {
-    this.userService.getUsers().subscribe((res: Array<User>) => this.users = res);
-  }
-
-  addNewUser(user: User) {
-    this.userService.addNewUser(user).subscribe((res: User) => this.users.push(res));
-  }
-
-  deleteUser(userId: {id: string}) {
-    this.userService.deleteUser(userId).subscribe((res: DeleteMassage) => {
-      this.users = this.users.filter((item) => item._id !== res.id);
+    this.userService.getUsers().subscribe(res => {
+      this.store.dispatch(new GetAllUsers(res));
+    });
+    this.store.select(getAllUsers).subscribe(res => {
+      this.users = res;
     });
   }
-
 }

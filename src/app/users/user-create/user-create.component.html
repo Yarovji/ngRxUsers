@@ -1,0 +1,6 @@
+<form class="example-form" #form="ngForm" (submit)="addNewUser(form.value); inputName.value='';">
+  <mat-form-field class="example-full-width">
+    <input matInput type="text" ngModel name="name" #inputName placeholder="Введіть ім'я">
+  </mat-form-field>
+  <button mat-raised-button color="primary">Додати</button>
+</form>

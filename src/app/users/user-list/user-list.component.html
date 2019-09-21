@@ -1,0 +1,8 @@
+<hr>
+<ul>
+  <li *ngFor="let user of users" >
+    <span (click)="openDialog(user)">{{user.name}}</span>
+    <button mat-mini-fab color="warn" (click)="deleteUser(user._id)">x</button>
+  </li>
+</ul>
+<hr>

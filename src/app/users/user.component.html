@@ -1,16 +1,4 @@
 <div class="main-container">
-  <form class="example-form" #form="ngForm" (submit)="addNewUser(form.value); inputName.value='';">
-    <mat-form-field class="example-full-width">
-      <input matInput type="text" ngModel name="name" #inputName placeholder="Введіть ім'я">
-    </mat-form-field>
-    <button mat-raised-button color="primary">Додати</button>
-  </form>
-  <hr>
-  <ul>
-    <li *ngFor="let user of users">
-      {{user.name}}
-      <button mat-mini-fab color="warn" (click)="deleteUser(user._id)">x</button>
-    </li>
-  </ul>
-  <hr>
+  <app-user-create [users]="users"></app-user-create>
+  <app-user-list [users]="users"></app-user-list>
 </div>

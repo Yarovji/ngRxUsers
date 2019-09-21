@@ -22,4 +22,8 @@ export class UserService {
     return this.http.delete<DeleteMassage>(`http://localhost:8081/api/user/${userId}`);
   }
 
+  editUser(user: User): Observable<User> {
+    return this.http.put<User>(`http://localhost:8081/api/user`, user);
+  }
+
 }
